@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Header from './Header.js'
+import Content from './content';
+import Footer from './footer.js'
+import {Button} from 'reactstrap';
 
 function App() {
+  const [checked,setChecked]= useState(false);
+  const [open,setOpen]= useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Header checked={checked} setChecked={setChecked} open={open} setOpen={setOpen}
+          isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+        <Content />
+        <Footer isDarkMode={isDarkMode}/>
+        <div class="navbar" style={{ position: "fixed"}}>
+        <Button outline color="primary" size="lg">Add hodlinfo to homescreen</Button>{'  '}
+        </div>
     </div>
   );
 }
